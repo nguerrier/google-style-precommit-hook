@@ -1,12 +1,15 @@
 #!/bin/sh
 mkdir -p .cache
 cd .cache
+echo "echo"
 if [ ! -f google-java-format-1.5-all-deps.jar ]
 then
     curl -LJO "https://github.com/google/google-java-format/releases/download/google-java-format-1.5/google-java-format-1.5-all-deps.jar"
     chmod 755 google-java-format-1.5-all-deps.jar
 fi
 cd ..
+
+echo "echo2"
 
 changed_java_files=$(git diff --cached --name-only --diff-filter=ACMR | grep ".*java$" )
 echo $changed_java_files
